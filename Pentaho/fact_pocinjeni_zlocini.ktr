@@ -659,6 +659,148 @@
     </hop>
   </order>
   <step>
+    <name>Insert / update</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>mysql</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>zrdw_crimes_in_chicago</schema>
+      <table>fact_pocinjeni_zlocini</table>
+      <key>
+        <name>id</name>
+        <field>id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>opis_zlocina</name>
+        <field>opis_zlocina</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>uhicenje</name>
+        <field>uhicenje</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>obiteljsko_zlostavljanje</name>
+        <field>obiteljsko_zlostavljanje</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>mjesto_i_okruzenje</name>
+        <field>mjesto_i_okruzenje</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>kolicina_svjedoka</name>
+        <field>kolicina_svjedoka</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>tk_lokacija</name>
+        <field>tk_lokacija</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>tk_tip_zlocina</name>
+        <field>tk_tip_zlocina</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>tk_pocinitelj</name>
+        <field>tk_pocinitelj</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>tk_vrijeme</name>
+        <field>tk_vrijeme</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>opis_zlocina</name>
+        <rename>opis_zlocina</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>uhicenje</name>
+        <rename>uhicenje</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>obiteljsko_zlostavljanje</name>
+        <rename>obiteljsko_zlostavljanje</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>mjesto_i_okruzenje</name>
+        <rename>mjesto_i_okruzenje</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>kolicina_svjedoka</name>
+        <rename>kolicina_svjedoka</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>tk_lokacija</name>
+        <rename>tk_lokacija</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>tk_tip_zlocina</name>
+        <rename>tk_tip_zlocina</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>tk_pocinitelj</name>
+        <rename>tk_pocinitelj</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>tk_vrijeme</name>
+        <rename>tk_vrijeme</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1344</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Merge join</name>
     <type>MergeJoin</type>
     <description/>
@@ -687,7 +829,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
+      <xloc>528</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -722,7 +864,7 @@
     </remotesteps>
     <GUI>
       <xloc>784</xloc>
-      <yloc>128</yloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -755,8 +897,46 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
-      <yloc>288</yloc>
+      <xloc>1056</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge join 4</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step1>Sort rows 8</step1>
+    <step2>Sort rows 9</step2>
+    <keys_1>
+      <key>id</key>
+      <key>datum</key>
+      <key>vrijeme</key>
+    </keys_1>
+    <keys_2>
+      <key>id1</key>
+      <key>datum1</key>
+      <key>vrijeme1</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -816,8 +996,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1264</xloc>
-      <yloc>288</yloc>
+      <xloc>1248</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -858,8 +1038,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>224</yloc>
+      <xloc>384</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -900,8 +1080,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>304</yloc>
+      <xloc>464</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -985,7 +1165,7 @@
     </remotesteps>
     <GUI>
       <xloc>704</xloc>
-      <yloc>224</yloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1026,7 +1206,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>944</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1068,8 +1248,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>112</yloc>
+      <xloc>928</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1111,7 +1291,91 @@
     </remotesteps>
     <GUI>
       <xloc>1168</xloc>
-      <yloc>288</yloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 8</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 9</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>id1</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1199,8 +1463,8 @@ ON dl.id = latest_versions.id AND dl.version = latest_versions.max_version;</sql
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>336</yloc>
+      <xloc>384</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1290,8 +1554,8 @@ ON dp.id = latest_versions.id AND dp.version = latest_versions.max_version;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>352</yloc>
+      <xloc>864</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1382,8 +1646,8 @@ ON dtz.id = latest_versions.id AND dtz.version = latest_versions.max_version;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>320</yloc>
+      <xloc>608</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1515,8 +1779,8 @@ FROM zrdw_crimes_in_chicago.dim_vrijeme
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>352</yloc>
+      <xloc>48</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1840,272 +2104,8 @@ FROM crimes_in_chicago.pocinjeni_zlocini
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 8</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 9</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>id1</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge join 4</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <join_type>INNER</join_type>
-    <step1>Sort rows 8</step1>
-    <step2>Sort rows 9</step2>
-    <keys_1>
-      <key>id</key>
-      <key>datum</key>
-      <key>vrijeme</key>
-    </keys_1>
-    <keys_2>
-      <key>id1</key>
-      <key>datum1</key>
-      <key>vrijeme1</key>
-    </keys_2>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / update</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>mysql</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>zrdw_crimes_in_chicago</schema>
-      <table>fact_pocinjeni_zlocini</table>
-      <key>
-        <name>id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>opis_zlocina</name>
-        <field>opis_zlocina</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>uhicenje</name>
-        <field>uhicenje</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>obiteljsko_zlostavljanje</name>
-        <field>obiteljsko_zlostavljanje</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>mjesto_i_okruzenje</name>
-        <field>mjesto_i_okruzenje</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>kolicina_svjedoka</name>
-        <field>kolicina_svjedoka</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>tk_lokacija</name>
-        <field>tk_lokacija</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>tk_tip_zlocina</name>
-        <field>tk_tip_zlocina</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>tk_pocinitelj</name>
-        <field>tk_pocinitelj</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>tk_vrijeme</name>
-        <field>tk_vrijeme</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>opis_zlocina</name>
-        <rename>opis_zlocina</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>uhicenje</name>
-        <rename>uhicenje</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>obiteljsko_zlostavljanje</name>
-        <rename>obiteljsko_zlostavljanje</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>mjesto_i_okruzenje</name>
-        <rename>mjesto_i_okruzenje</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>kolicina_svjedoka</name>
-        <rename>kolicina_svjedoka</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>tk_lokacija</name>
-        <rename>tk_lokacija</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>tk_tip_zlocina</name>
-        <rename>tk_tip_zlocina</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>tk_pocinitelj</name>
-        <rename>tk_pocinitelj</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>tk_vrijeme</name>
-        <rename>tk_vrijeme</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1360</xloc>
-      <yloc>272</yloc>
+      <xloc>48</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
